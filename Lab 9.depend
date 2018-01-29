@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1449501660 source:h:\csci 161\lab 9\lab 9\main.cpp
+	<iostream>
+	<cmath>
+	<iomanip>
+
