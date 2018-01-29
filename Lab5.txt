@@ -1,0 +1,59 @@
+ Please enter the speed limit.
+100
+ Please enter the speed of your vehicle.
+90
+ You are 10 km/hr below the speed limit and safe to go with it. Don't forget to
+apply black pepper on your turkey
+
+Process returned 0 (0x0)   execution time : 3.229 s
+Press any key to continue.
+
+
+ Please enter the speed limit.
+110
+ Please enter the speed of your vehicle.
+130
+ You have crossed your limit by 20 km/hr If you are driving at a regular zone
+then your fine is $284.91
+ If you are driving at a school or a construction zone then press 2 if you are
+ at both then press 4 if you are not at any one of them then press 0 or any key
+  to continue
+0
+ Lower your speed and drive safe, And don't forget to apply black pepper on your
+ turkey
+
+Process returned 0 (0x0)   execution time : 8.252 s
+Press any key to continue.
+
+ Please enter the speed limit.
+100
+ Please enter the speed of your vehicle.
+120
+ You have crossed your limit by 20 km/hr If you are driving at a regular zone
+then your fine is $284.91
+ If you are driving at a school or a construction zone then press 2 if you are
+ at both then press 4 if you are not at any one of them then press 0 or any key
+  to continue
+2
+ Sorry but your fine is now $569.82 Please lower your speed by 20 km/hr to save
+
+ yourself for the turkey
+
+Process returned 0 (0x0)   execution time : 12.729 s
+Press any key to continue.
+
+ Please enter the speed limit.
+120
+ Please enter the speed of your vehicle.
+150
+ You have crossed your limit by 30 km/hr If you are driving at a regular zone
+then your fine is $284.91
+ If you are driving at a school or a construction zone then press 2 if you are
+ at both then press 4 if you are not at any one of them then press 0 or any key
+  to continue
+4
+ Sorry buddy its ain't your day You are gonna fined by $1139.64 If you want to
+ cheer your turkey then lower you speed by 30 km/hr
+
+Process returned 0 (0x0)   execution time : 7.519 s
+Press any key to continue.
