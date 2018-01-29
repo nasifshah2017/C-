@@ -1,268 +1,86 @@
-// File: LAB 06.cpp
-// Name: Syed Nasif Ali (201304650)
-// Username: x2013ijn
-// Course: CSCI 161
-// Purpose: Assignment 3
-// Date: 2015/10/22
-// Purpose: This is a calendar program which outputs the the whole year calendar
-//          that the user wants to view, it can also shows a specific month from a
-//          year, and highlights a specific date from that month.
-
-
-
-
 #include <iostream>
 #include <iomanip>
+#include <ctime>
+#include <windows.h>
 
 using namespace std;
-
-void showDay ();
-void showDate31();
-void showDate30();
-void showFeb();
-void showLeapFeb();
-int FirstDay (int);
-bool LeapYear(int);
 
 
 
 
 int main()
 {
-    int year, FirstDayYear;
+    time_t now;
+    tm     current, event;
+    int InputDay, InputHour, InputMinute, InputSecond, InputYear, InputMonth;
+    int Hour, Minute, Second;
+    double seconds, Day;
 
-    cout << " Please enter the year you want to view \n";
-    cin >> year;
+    cout << " Please enter the year of the event. (Above 1900) \n";
+    cin  >> InputYear;
+    cout << "Please enter the month of the event. \n";
+    cin  >> InputMonth;
+    cout << " Please enter the day of the event. \n";
+    cin  >> InputDay;
+    cout << "Please enter the hour of the event for 24hrs clock \n";
+    cin  >> InputHour;
+    cout << " Please enter the minute of the event \n";
+    cin  >> InputMinute;
+    cout << " Please enter the second of the event \n";
+    cin  >> InputSecond;
 
-    FirstDay(year);
+    /* Set the time for X-Ring ceremony Dec 3, 2015 at 2 pm
+       hour - 24 hour clock    mon - from 0 to 11   year - counts from 1900 */
 
-    LeapYear(year);
+    event.tm_hour = InputHour +1; event.tm_min = InputMinute; event.tm_sec = InputSecond;
+    event.tm_mday = InputDay;  event.tm_mon = InputMonth -1; event.tm_year = InputYear - 1900;
 
-
-
-    cout << " January " << year << "\n";
-        showDay();
-        cout << "\n";
-        showDate31();
-        cout << "\n";
-
-    cout << " February " << year << "\n";
-    showDay();
-     cout << "\n";
-    if (LeapYear)
+    while (true)                                 // infinite loop
     {
-        showLeapFeb();
-        cout << "\n";
+        now = time(NULL);                        // get current time
+
+        current = *localtime(&now);              // convert to usable form
+
+        seconds = difftime(mktime(&event), now); // seconds until x-ring
+
+        cout << "\nCOUNTDOWN TO WORLD CUP\n\n\n";
+
+        cout << setfill('0') << fixed << setprecision(0);
+
+        cout << setw(2) << current.tm_hour << ':'
+             << setw(2) << current.tm_min  << ':'
+             << setw(2) << current.tm_sec  << ' '
+             << setw(2) << current.tm_mday << '/'
+             << setw(2) << current.tm_mon + 1 << '/'
+             << setw(4) << 1900 + current.tm_year << "  CURRENT TIME" << endl;
+
+        cout << "\n\n" << setw(19) << seconds << "  seconds\n\n\n";
+
+        Day = (seconds/86400);
+        Hour = (((int)seconds/3600)%24);
+        Minute = (((int)seconds/60)%60);
+        Second = ((int)seconds%60);
+
+        cout << (int)Day << " days  "
+             << Hour <<  ":"
+             << Minute <<  ":"
+             << Second << "\n\n";
+
+        cout << setw(2) << event.tm_hour << ':'
+             << setw(2) << event.tm_min  << ':'
+             << setw(2) << event.tm_sec  << ' '
+             << setw(2) << event.tm_mday << '/'
+             << setw(2) << event.tm_mon + 1 << '/'
+             << setw(4) << 1900 + event.tm_year << "  EVENT" << endl << endl;
+
+        Sleep(1000);
+        system("cls");
+
+
+
     }
-    else
-    {
-        showFeb();
-        cout << "\n";
-    }
-
-    cout << " March " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate31();
-    cout << "\n";
-
-    cout << " April " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate30();
-    cout << "\n";
-
-    cout << " May " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate31();
-     cout << "\n";
-
-    cout << " June " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate30();
-    cout << "\n";
-
-    cout << " July " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate31();
-    cout << "\n";
-
-    cout << " August " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate31();
-    cout << "\n";
-
-    cout << " September " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate30();
-    cout << "\n";
-
-    cout << " October " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate31();
-    cout << "\n";
-
-    cout << " November " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate30();
-    cout << "\n";
-
-    cout << " December " << year << "\n";
-    showDay();
-    cout << "\n";
-    showDate31();
-    cout << "\n";
 
 
 
-
-
-return 0;
+    return 0;
 }
-
-void showDay()
-{
-     cout << "\n";
-     cout << "Sun     Mon      Tues       Wed        Thurs     Fri      Sat \n";
-}
-
-void showDate31()
-{
-    int date, line;
-
-    date = 1;
-
-
-    for (date = 1; date <= 31; date++)
-    {
-      if (date > 7)
-        { line = date % 7;
-
-        }
-
-        if (line == 0)
-        {
-            cout << "\n";
-        }
-
-
-
-
-
-        cout << date << setw(10);
-    }
-    cout << "\n";
-}
-
-void showDate30()
-{
-    int date = 1, line;
-
-
-
-    for (date = 1; date <= 30; date++)
-    { if (date > 7)
-        {line = date % 7;
-
-        }
-        if (line == 0)
-        {
-            cout << "\n";
-        }
-
-
-
-        cout << date << setw(10);
-    }
-
-    cout << "\n";
-}
-
-void showFeb()
-{
-    int date = 1, line;
-
-
-
-  for (date = 1; date < 28; date++)
-    { if (date > 7)
-    {line = date % 7;
-
-    }
-        if (line == 0)
-        {
-            cout << "\n";
-        }
-
-
-        cout << date << setw(10);
-    }
-    cout << "\n";
-}
-
-void showLeapFeb()
-{
-    int date = 1, line;
-
-
-
-    for (date = 1; date < 29; date++)
-    { if (date > 7)
-    {line = date % 7;
-
-    }
-        if  (line == 0)
-        {
-            cout << "\n";
-        }
-
-
-        cout << date << setw(10);
-    }
-    cout << "\n";
-}
-
-int FirstDay(int yearly)
-{
-    int PrevLastDay, FirstDay;
-
-   PrevLastDay = ((yearly*365)+(yearly/4)-(yearly/100)+(yearly/400)%(7));
-
-   if (PrevLastDay >= 0 && 6 < PrevLastDay)
-    {
-        FirstDay = 1 + PrevLastDay;
-    }
-    else if (PrevLastDay == 6)
-    {
-        FirstDay = 0;
-    }
-    else
-    {
-        cout << " Disaster \n";
-        return 0;
-    }
-
-
-}
-
-bool LeapYear(int yearly)
-{
-
-    if (((yearly % 4 == 0) && (yearly % 100 != 0)) || (yearly % 400 == 0))
-    {
-        return true;
-    }
-
-    else
-    {
-        return false;
-    }
-}
-

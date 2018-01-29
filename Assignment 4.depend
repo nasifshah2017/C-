@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1448751497 source:h:\csci 161\assignment 4\assignment 4\main.cpp
+	<iostream>
+	<iomanip>
+	<ctime>
+	<windows.h>
+
