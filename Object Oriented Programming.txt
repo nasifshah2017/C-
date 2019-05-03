@@ -59,7 +59,7 @@ Object Oriented Programming
 	The value of "this" changes depending on how, when and where the constructor function is called.
 	When we created the John object and we called the Constructor function in that particular instance 
 	the "this" keyword referred to our John object, but when we called this function again to call the Jane object
-	in that instance when this function runs the keyword "this" has the value of Jane object. 
+	in that instance when this function runs the keyword "this", it has the value of Jane object. 
 
 	We can use the "this" keyword to refer to whichever object is currently being created. 
 
